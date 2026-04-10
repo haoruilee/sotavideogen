@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>文档 — Sota Video Gen</title>
+    <meta name="description" content="Sota Video Gen 部署与子域配置文档。sota video gen。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/site.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">SV</span>
+          <span>Sota Video Gen</span>
+        </a>
+        <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+          菜单
+        </button>
+        <nav id="site-nav" class="nav" data-nav aria-label="主导航">
+          <a href="/">首页</a>
+          <a href="/app/">应用</a>
+          <a href="/blog/">博客</a>
+          <a href="/docs/" aria-current="page">文档</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap" id="main" style="padding-bottom: 4rem">
+      <header class="page-hero">
+        <p class="eyebrow">sota video gen</p>
+        <h1 class="section-title" style="margin-bottom: 0.5rem">文档</h1>
+        <p class="section-sub" style="margin-bottom: 0">本地预览、上线托管与子域映射。</p>
+      </header>
+
+      <div class="docs-layout">
+        <aside class="docs-nav" aria-label="文档目录">
+          <a href="#local">本地预览</a>
+          <a href="#subdomains">子域映射</a>
+          <a href="#terms">服务条款（占位）</a>
+          <a href="#privacy">隐私说明（占位）</a>
+        </aside>
+        <div class="prose">
+          <h2 id="local">本地预览</h2>
+          <p>
+            将 HTTP 服务器的文档根目录指向本仓库的 <code>public</code> 文件夹。示例（Python 内置服务器）：
+          </p>
+          <p><code>cd public && python3 -m http.server 8080</code></p>
+          <p>在浏览器打开 <code>http://127.0.0.1:8080/</code>。所有页面使用以 <code>/</code> 开头的资源路径，因此需要 Web 服务器，而不是直接双击打开 HTML 文件。</p>
+
+          <h2 id="subdomains">子域映射</h2>
+          <p>
+            法律与道德上不应复制第三方站点；本仓库提供的是 <strong>Sota Video Gen</strong>（品牌词：<strong>sota video gen</strong>）的原创页面。若你希望「主站 / 应用 / 博客 / 文档」分别用子域展示，可采用以下常见做法：
+          </p>
+          <ul>
+            <li>
+              <strong>同一静态目录 + 多主机名</strong>：在 CDN 或反向代理（如 Nginx、Cloudflare Workers）上为
+              <code>app.example.com</code>、<code>blog.example.com</code> 配置独立源站路径，分别映射到
+              <code>/app/</code>、<code>/blog/</code>、<code>/docs/</code>，并把该路径设为文档根或添加重写规则。
+            </li>
+            <li>
+              <strong>多仓库或多构建产物</strong>：每个子域部署独立项目，仅共享设计系统；适合应用与营销站技术栈不同的情况。
+            </li>
+          </ul>
+          <p>本站页面链接已按路径划分：<code>/</code> 营销首页、<code>/app/</code>、<code>/blog/</code>、<code>/docs/</code>，便于你对照配置 DNS 与路由。</p>
+
+          <h2 id="terms">服务条款（占位）</h2>
+          <p>上线前请由法务审阅并替换为正式条款。</p>
+
+          <h2 id="privacy">隐私说明（占位）</h2>
+          <p>说明收集哪些数据、保存多久、用户如何删除账户等；若接入分析或广告，需披露第三方处理方。</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap legal" style="margin-top: 0; padding-top: 0; border-top: 0">
+        <span>Sota Video Gen</span>
+        <a href="/">首页</a>
+      </div>
+    </footer>
+    <script src="/js/site.js" defer></script>
+  </body>
+</html>
