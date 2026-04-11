@@ -45,8 +45,9 @@ def main() -> int:
     data = yaml.safe_load(ROUTES.read_text(encoding="utf-8"))
     ref = heyvid_en_slugs()
     ours = our_slugs(data)
+    allow_extra = set(data.get("parity_allow_extra_slugs") or [])
     missing = ref - ours
-    extra = ours - ref
+    extra = ours - ref - allow_extra
     if missing or extra:
         print("Parity check FAILED")
         if missing:

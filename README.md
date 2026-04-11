@@ -12,7 +12,7 @@ cd public && python3 -m http.server 8080
 
 ## 生成工具路由页面
 
-- **路由与文案**：编辑 `site/routes.yaml`（每个 slug 的 `kind`、`title`、`desc`，以及 `locales` 列表）。
+- **路由与文案**：编辑 `site/routes.yaml`（每个 slug 的 `kind`、`title`、`desc`、`mode`，以及 `locales` 列表）。**新增模型落地页**只需加一段 `pages` 配置并重新生成，详见 [`site/ADDING_MODELS.md`](site/ADDING_MODELS.md)。
 - **版式与组件**：编辑 `site/templates/`（Jinja2：`base.html`、各页面模板、`partials/`）。
 - **营销首页**：由 `site/templates/home.html` 生成 `public/index.html`（与工具页共享 `base`、canonical、hreflang、OG）。
 - **全局 SEO**：`site.site`（`name`、`home_title`、`contact_email`、`og_image` 等）与 `sitemap.base_url` 写入 `<head>` 与 JSON-LD。

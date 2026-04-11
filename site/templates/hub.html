@@ -7,53 +7,19 @@
   <p class="section-sub">{{ desc }}</p>
 </div>
 <div class="hub-grid">
+  {% for section in hub_sections %}
   <section class="card hub-card">
-    <h2>视频</h2>
+    <h2>{{ section.title }}</h2>
     <ul class="hub-list">
-      <li><a href="{{ path(prefix, 'text-to-video') }}">文本生成视频</a></li>
-      <li><a href="{{ path(prefix, 'image-to-video') }}">图片生成视频</a></li>
-      <li><a href="{{ path(prefix, 'video-to-video') }}">视频到视频</a></li>
-      <li><a href="{{ path(prefix, 'reference-to-video') }}">参考生成视频</a></li>
-      <li><a href="{{ path(prefix, 'video-transition') }}">视频转场</a></li>
-      <li><a href="{{ path(prefix, 'video-effects') }}">视频特效</a></li>
+      {% for item in section.links %}
+      <li>
+        <a href="{{ item.href }}">{{ item.title }}</a>
+        {% if section.show_path %}<span class="mono">{{ item.href }}</span>{% endif %}
+      </li>
+      {% endfor %}
     </ul>
   </section>
-  <section class="card hub-card">
-    <h2>图像</h2>
-    <ul class="hub-list">
-      <li><a href="{{ path(prefix, 'text-to-image') }}">文本生成图片</a></li>
-      <li><a href="{{ path(prefix, 'image-to-image') }}">图片到图片</a></li>
-      <li><a href="{{ path(prefix, 'photo-effects') }}">照片效果</a></li>
-    </ul>
-  </section>
-  <section class="card hub-card">
-    <h2>音频 / 口型</h2>
-    <ul class="hub-list">
-      <li><a href="{{ path(prefix, 'text-to-speech') }}">文本转语音</a></li>
-      <li><a href="{{ path(prefix, 'voice-cloning') }}">声音克隆</a></li>
-      <li><a href="{{ path(prefix, 'lip-sync') }}">口型同步</a></li>
-      <li><a href="{{ path(prefix, 'noise-reduction') }}">降噪修复</a></li>
-      <li><a href="{{ path(prefix, 'suno') }}">配乐生成</a></li>
-    </ul>
-  </section>
-  <section class="card hub-card">
-    <h2>模型路线（演示）</h2>
-    <ul class="hub-list">
-      <li><a href="{{ path(prefix, 'seedance') }}">律动视频</a> <span class="mono">{{ path(prefix, 'seedance') }}</span></li>
-      <li><a href="{{ path(prefix, 'seedance-2-0') }}">律动视频 2.0</a> <span class="mono">{{ path(prefix, 'seedance-2-0') }}</span></li>
-      <li><a href="{{ path(prefix, 'kling-2-6') }}">可灵路线</a></li>
-      <li><a href="{{ path(prefix, 'hailuo-ai') }}">海螺路线</a></li>
-      <li><a href="{{ path(prefix, 'pika-ai') }}">皮卡车路线</a></li>
-      <li><a href="{{ path(prefix, 'pixverse-ai') }}">像素宇宙路线</a></li>
-      <li><a href="{{ path(prefix, 'runway') }}">跑道级工作流</a></li>
-      <li><a href="{{ path(prefix, 'runway-ai') }}">跑道级工作流 Pro</a></li>
-      <li><a href="{{ path(prefix, 'sora-2') }}">长镜头叙事</a></li>
-      <li><a href="{{ path(prefix, 'veo-3') }}">高清写实路线</a></li>
-      <li><a href="{{ path(prefix, 'vidu-ai') }}">叙事分镜路线</a></li>
-      <li><a href="{{ path(prefix, 'wan-ai') }}">万用综合模型</a></li>
-      <li><a href="{{ path(prefix, 'nano-banana') }}">轻量趣味模型</a></li>
-    </ul>
-  </section>
+  {% endfor %}
   <section class="card hub-card hub-card-wide">
     <h2>全部工具页（自动生成清单）</h2>
     <ul class="hub-list compact">

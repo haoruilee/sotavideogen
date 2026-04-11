@@ -1,8 +1,18 @@
 # Single source of truth: URL slugs, page kind, and default (zh) copy.
 # Regenerate static HTML: python3 scripts/generate_pages.py
+#
+# 新模型上线：在 pages 下增加 slug（URL 路径名），kind: studio，mode 见下方说明，
+# 可选 hub_section 覆盖分区。运行 python3 scripts/generate_pages.py 即可生成全站 + 各语言镜像。
+#
+# mode（表单骨架）：video | image_to_video | video_rewrite | reference_video | transition |
+#   effects | image | image_edit | photo | tts | voice | avatar | lip | motion | denoise |
+#   music | model（模型路线通用）
 
 skip_slugs:
   - blog
+
+# 允许比参考站 sitemap 多出这些 slug（verify_sitemap_parity.py）
+parity_allow_extra_slugs: []
 
 locales:
   - es
@@ -75,6 +85,23 @@ site:
   contact_email: hello@example.com
   # Optional absolute or site-root path for og:image (add a real file under public/ when ready)
   og_image: ""
+
+# /ai-tools/ hub: sections and order. Each studio page is placed by `hub_section` (optional)
+# or by `mode` → section mapping in generate_pages.py (model→models, music→audio, …).
+hub:
+  sections:
+    - id: video
+      title: 视频
+      show_path: false
+    - id: image
+      title: 图像
+      show_path: false
+    - id: audio
+      title: 音频 / 口型
+      show_path: false
+    - id: models
+      title: 模型路线（演示）
+      show_path: true
 
 sitemap:
   base_url: https://example.com
@@ -194,70 +221,84 @@ pages:
   seedance:
     kind: studio
     mode: model
+    category: video
     title: 律动视频
     desc: 舞蹈与肢体语言强调的运动视频工作流（演示路由 /seedance）。
   seedance-2-0:
     kind: studio
     mode: model
+    category: video
     title: 律动视频 2.0
     desc: 改进版运动控制与细节保留（演示路由 /seedance-2-0）。
   hailuo-ai:
     kind: studio
     mode: model
+    category: video
     title: 海螺路线
     desc: 高动态场景与卡通渲染风格（演示）。
   kling-2-6:
     kind: studio
     mode: model
+    category: video
     title: 可灵路线
     desc: 写实场景与复杂运镜示意（演示）。
   nano-banana:
     kind: studio
     mode: model
+    category: video
     title: 轻量趣味模型
     desc: 快速草稿与社交短视频风格。
   pika-ai:
     kind: studio
     mode: model
+    category: video
     title: 皮卡车路线
     desc: 强调节奏剪辑与转场模板。
   pixverse-ai:
     kind: studio
     mode: model
+    category: video
     title: 像素宇宙路线
     desc: 科幻与像素风画面实验。
   runway:
     kind: studio
     mode: model
+    category: video
     title: 跑道级工作流
     desc: 专业时间线与遮罩编辑占位。
   runway-ai:
     kind: studio
     mode: model
+    category: video
     title: 跑道级工作流 Pro
     desc: 扩展控件与批量任务队列（示意）。
   sora-2:
     kind: studio
     mode: model
+    category: video
     title: 长镜头叙事
     desc: 长时长与复杂因果链提示词（演示）。
   suno:
     kind: studio
     mode: music
+    category: audio
     title: 配乐生成
     desc: 背景音乐与氛围音效占位。
   veo-3:
     kind: studio
     mode: model
+    category: video
     title: 高清写实路线
     desc: 高分辨率与稳定肤色（示意）。
   vidu-ai:
     kind: studio
     mode: model
+    category: video
     title: 叙事分镜路线
     desc: 多分镜一致性与对白同步占位。
   wan-ai:
     kind: studio
     mode: model
+    category: video
     title: 万用综合模型
     desc: 通用提示词与多比例输出。

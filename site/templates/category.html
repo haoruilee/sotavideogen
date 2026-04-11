@@ -7,24 +7,11 @@
   <p class="section-sub">{{ desc }}</p>
 </div>
 <section class="card hub-card">
-  {% if category == 'video' %}
   <ul class="hub-list">
-    <li><a href="{{ path(prefix, 'text-to-video') }}">文本生成视频</a></li>
-    <li><a href="{{ path(prefix, 'image-to-video') }}">图片生成视频</a></li>
-    <li><a href="{{ path(prefix, 'video-to-video') }}">视频到视频</a></li>
-    <li><a href="{{ path(prefix, 'reference-to-video') }}">参考生成视频</a></li>
-    <li><a href="{{ path(prefix, 'video-transition') }}">视频转场</a></li>
-    <li><a href="{{ path(prefix, 'video-effects') }}">视频特效</a></li>
-    <li><a href="{{ path(prefix, 'motion-control') }}">动作控制</a></li>
-    <li><a href="{{ path(prefix, 'ai-avatar') }}">AI 形象</a></li>
+    {% for item in category_items %}
+    <li><a href="{{ item.href }}">{{ item.title }}</a></li>
+    {% endfor %}
   </ul>
-  {% else %}
-  <ul class="hub-list">
-    <li><a href="{{ path(prefix, 'text-to-image') }}">文本生成图片</a></li>
-    <li><a href="{{ path(prefix, 'image-to-image') }}">图片到图片</a></li>
-    <li><a href="{{ path(prefix, 'photo-effects') }}">照片效果</a></li>
-  </ul>
-  {% endif %}
   <p class="muted" style="margin-top:1rem"><a href="{{ path(prefix, 'ai-tools') }}">返回 AI 工具目录</a></p>
 </section>
 {% endblock %}

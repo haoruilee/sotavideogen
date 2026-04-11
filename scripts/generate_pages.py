@@ -55,6 +55,135 @@ def tool_slugs(pages: dict) -> list[str]:
     return sorted(s for s, m in pages.items() if m.get("kind") == "studio")
 
 
+def mode_to_hub_section(mode: str) -> str:
+    """Map studio form mode → hub section id (see site/routes.yaml hub.sections)."""
+    if mode == "music":
+        return "audio"
+    if mode == "model":
+        return "models"
+    if mode in (
+        "video",
+        "image_to_video",
+        "video_rewrite",
+        "reference_video",
+        "transition",
+        "effects",
+        "motion",
+        "avatar",
+        "lip",
+    ):
+        return "video"
+    if mode in ("image", "image_edit", "photo"):
+        return "image"
+    if mode in ("tts", "voice", "denoise"):
+        return "audio"
+    return "video"
+
+
+def studio_hub_section(meta: dict, mode: str) -> str:
+    override = meta.get("hub_section")
+    if override:
+        return str(override)
+    return mode_to_hub_section(mode)
+
+
+def category_items_for(
+    pages: dict, *, prefix: str, cat: str
+) -> list[dict[str, str]]:
+    """Studio slugs listed on ai-video-generator / ai-image-generator (subset of hub, not 1:1)."""
+    out: list[dict[str, str]] = []
+    for s in tool_slugs(pages):
+        meta = pages[s]
+        mode = meta.get("mode", "video")
+        explicit = meta.get("category")
+        if explicit is not None:
+            if explicit == cat:
+                out.append({"href": page_path(prefix, s), "title": meta["title"]})
+            continue
+        if cat == "image":
+            if mode in ("image", "image_edit", "photo"):
+                out.append({"href": page_path(prefix, s), "title": meta["title"]})
+        else:
+            if mode in (
+                "video",
+                "image_to_video",
+                "video_rewrite",
+                "reference_video",
+                "transition",
+                "effects",
+                "motion",
+                "avatar",
+            ):
+                out.append({"href": page_path(prefix, s), "title": meta["title"]})
+    out.sort(key=lambda x: x["title"])
+    return out
+
+
+def build_hub_sections(
+    data: dict, pages: dict, *, prefix: str
+) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+    """Sectioned links for /ai-tools/ + flat tool_items for the wide card."""
+    hub_cfg = data.get("hub") or {}
+    section_defs = list(hub_cfg.get("sections") or [])
+    if not section_defs:
+        section_defs = [
+            {"id": "video", "title": "视频", "show_path": False},
+            {"id": "image", "title": "图像", "show_path": False},
+            {"id": "audio", "title": "音频 / 口型", "show_path": False},
+            {"id": "models", "title": "模型路线（演示）", "show_path": True},
+        ]
+
+    by_id: dict[str, list[dict[str, Any]]] = {s["id"]: [] for s in section_defs}
+    tool_items: list[dict[str, str]] = []
+
+    for s in tool_slugs(pages):
+        meta = pages[s]
+        mode = meta.get("mode", "video")
+        sec = studio_hub_section(meta, mode)
+        by_id.setdefault(sec, [])
+        href = page_path(prefix, s)
+        entry = {
+            "href": href,
+            "title": meta["title"],
+            "show_path": sec == "models",
+        }
+        by_id[sec].append(entry)
+        tool_items.append({"href": href, "title": meta["title"], "desc": meta["desc"]})
+
+    known_ids = {s["id"] for s in section_defs}
+    extra_ids = sorted(k for k in by_id if k not in known_ids)
+
+    sections_out: list[dict[str, Any]] = []
+    for sec in section_defs:
+        sid = sec["id"]
+        links = sorted(by_id.get(sid, []), key=lambda x: x["title"])
+        if not links:
+            continue
+        sections_out.append(
+            {
+                "id": sid,
+                "title": sec.get("title", sid),
+                "show_path": bool(sec.get("show_path", False)),
+                "links": links,
+            }
+        )
+    for eid in extra_ids:
+        links = sorted(by_id[eid], key=lambda x: x["title"])
+        if not links:
+            continue
+        sections_out.append(
+            {
+                "id": eid,
+                "title": eid,
+                "show_path": eid == "models",
+                "links": links,
+            }
+        )
+
+    tool_items.sort(key=lambda x: x["title"])
+    return sections_out, tool_items
+
+
 def all_slugs(data: dict) -> list[str]:
     skip = set(data.get("skip_slugs") or [])
     return sorted(s for s in (data.get("pages") or {}) if s not in skip)
@@ -448,16 +577,7 @@ def main() -> None:
                     **seo,
                 }
             elif kind == "hub":
-                tool_items = []
-                for s in tool_slugs(pages):
-                    m = pages[s]
-                    tool_items.append(
-                        {
-                            "href": page_path(prefix, s),
-                            "title": m["title"],
-                            "desc": m["desc"],
-                        }
-                    )
+                hub_sections, tool_items = build_hub_sections(data, pages, prefix=prefix)
                 template = "hub.html"
                 ld = json_ld_software(site, url=abs_url(base, canonical_rel))
                 hlang = hreflang_alternates(
@@ -481,10 +601,13 @@ def main() -> None:
                     "locale_labels": locale_labels,
                     "switcher_slug": "ai-tools",
                     "nav_active": "tools",
+                    "hub_sections": hub_sections,
                     "tool_items": tool_items,
                     **seo,
                 }
             elif kind == "category":
+                cat = meta.get("cat", "video")
+                cat_items = category_items_for(pages, prefix=prefix, cat=cat)
                 template = "category.html"
                 ld = json_ld_webpage(
                     site, name=title, description=desc, url=abs_url(base, canonical_rel)
@@ -510,7 +633,7 @@ def main() -> None:
                     "locale_labels": locale_labels,
                     "switcher_slug": slug,
                     "nav_active": "tools",
-                    "category": meta.get("cat", "video"),
+                    "category_items": cat_items,
                     **seo,
                 }
             else:
