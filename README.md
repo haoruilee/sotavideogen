@@ -12,13 +12,17 @@ cd public && python3 -m http.server 8080
 
 ## 生成工具路由页面
 
-扁平工具路径（如 `/seedance/`、`/seedance-2-0/`、`/text-to-video/` 等）由脚本批量生成：
+- **路由与文案**：编辑 `site/routes.yaml`（每个 slug 的 `kind`、`title`、`desc`，以及 `locales` 列表）。
+- **版式与组件**：编辑 `site/templates/`（Jinja2：`base.html`、各页面模板、`partials/`）。
+
+首次安装依赖后生成静态页：
 
 ```bash
+pip install -r requirements.txt
 python3 scripts/generate_pages.py
 ```
 
-会更新 `public/sitemap.xml` 与 `public/robots.txt`（域名占位仍为 `https://example.com`）。同时生成 **17 个语言前缀** 下的同款路由（如 `/es/seedance/`、`/zh-Hant/text-to-video/`），以及各 `/locale/` 首页与 `/locale/blog/` 镜像页。`public/index.html` 与 `public/blog/` 下已有手工页面不会被覆盖。
+会更新 `public/sitemap.xml` 与 `public/robots.txt`（默认域名占位在 `site/routes.yaml` 的 `sitemap.base_url`）。同时生成 **17 个语言前缀** 下的同款路由，以及各 `/locale/` 首页与 `/locale/blog/` 镜像页。`public/index.html` 与 `public/blog/` 下已有手工页面不会被覆盖。
 
 核对参考站 sitemap 中的路径集合（只读）：
 

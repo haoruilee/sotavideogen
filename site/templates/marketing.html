@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% from 'partials/paths.html' import path %}
+{% block main %}
+<article class="page-hero prose marketing-page">
+  <p class="eyebrow">sota video gen</p>
+  <h1 class="section-title">{{ title }}</h1>
+  <p>{{ desc }}</p>
+  <p>本页为占位内容，用于匹配路由 <code>{{ page_path }}</code>。上线前请替换为正式文案与设计稿。</p>
+  <p>
+    <a class="btn btn-primary" href="{{ path(prefix, 'ai-tools') }}">浏览 AI 工具</a>
+    <a class="btn btn-ghost" href="/app/">打开应用</a>
+  </p>
+</article>
+{% endblock %}

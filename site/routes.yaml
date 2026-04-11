@@ -1,0 +1,249 @@
+# Single source of truth: URL slugs, page kind, and default (zh) copy.
+# Regenerate static HTML: python3 scripts/generate_pages.py
+
+skip_slugs:
+  - blog
+
+locales:
+  - es
+  - fr
+  - pt
+  - it
+  - ja
+  - th
+  - pl
+  - ko
+  - de
+  - ru
+  - da
+  - nb
+  - nl
+  - id
+  - tr
+  - zh
+  - zh-Hant
+
+html_lang:
+  "": zh-Hans
+  es: es
+  fr: fr
+  pt: pt
+  it: it
+  ja: ja
+  th: th
+  pl: pl
+  ko: ko
+  de: de
+  ru: ru
+  da: da
+  nb: nb
+  nl: nl
+  id: id
+  tr: tr
+  zh: zh-Hans
+  zh-Hant: zh-Hant
+
+locale_labels:
+  es: Español
+  fr: Français
+  pt: Português
+  it: Italiano
+  ja: 日本語
+  th: ไทย
+  pl: Polski
+  ko: 한국어
+  de: Deutsch
+  ru: Русский
+  da: Dansk
+  nb: Norsk
+  nl: Nederlands
+  id: Indonesia
+  tr: Türkçe
+  zh: 简体中文
+  zh-Hant: 繁體中文
+
+sitemap:
+  base_url: https://example.com
+  extra_paths:
+    - /
+    - /app/
+    - /blog/
+    - /blog/getting-started.html
+    - /docs/
+
+pages:
+  about-us:
+    kind: marketing
+    title: 关于我们
+    desc: Sota Video Gen 团队与产品方向（演示页）。
+  affiliate:
+    kind: marketing
+    title: 联盟合作
+    desc: 合作伙伴与分佣说明（占位，上线前请法务审核）。
+  refer-a-friend:
+    kind: marketing
+    title: 邀请好友
+    desc: 邀请奖励与规则（占位）。
+  pricing:
+    kind: marketing
+    title: 定价方案
+    desc: Sota Video Gen 套餐与额度说明（示意）。
+  ai-tools:
+    kind: hub
+    title: AI 工具目录
+    desc: 按任务类型浏览视频、图像与音频工具（静态演示）。
+  ai-video-generator:
+    kind: category
+    cat: video
+    title: AI 视频生成
+    desc: 文本驱动、参考图驱动与视频变换等入口汇总。
+  ai-image-generator:
+    kind: category
+    cat: image
+    title: AI 图像生成
+    desc: 文生图、图生图与画面效果工具汇总。
+  text-to-video:
+    kind: studio
+    mode: video
+    title: 文本生成视频
+    desc: 用结构化提示词生成短片与分镜预览。
+  image-to-video:
+    kind: studio
+    mode: image_to_video
+    title: 图片生成视频
+    desc: 以关键帧或参考图驱动运动与镜头。
+  video-to-video:
+    kind: studio
+    mode: video_rewrite
+    title: 视频到视频
+    desc: 在保留结构的前提下重绘风格或替换外观。
+  reference-to-video:
+    kind: studio
+    mode: reference_video
+    title: 参考生成视频
+    desc: 多参考拼贴：角色、场景与风格对齐。
+  video-transition:
+    kind: studio
+    mode: transition
+    title: 视频转场
+    desc: 两段素材之间的过渡与衔接生成。
+  video-effects:
+    kind: studio
+    mode: effects
+    title: 视频特效
+    desc: 粒子、光效与氛围增强（示意控件）。
+  text-to-image:
+    kind: studio
+    mode: image
+    title: 文本生成图片
+    desc: 生成概念图、海报与关键帧。
+  image-to-image:
+    kind: studio
+    mode: image_edit
+    title: 图片到图片
+    desc: 在参考图上进行变体、修复与扩展。
+  photo-effects:
+    kind: studio
+    mode: photo
+    title: 照片效果
+    desc: 人像润饰与画面质感调整（演示）。
+  text-to-speech:
+    kind: studio
+    mode: tts
+    title: 文本转语音
+    desc: 多语种配音与旁白生成。
+  voice-cloning:
+    kind: studio
+    mode: voice
+    title: 声音克隆
+    desc: 上传样本并生成接近音色（需合规授权）。
+  ai-avatar:
+    kind: studio
+    mode: avatar
+    title: AI 形象
+    desc: 数字人出镜与口型同步前置流程（演示）。
+  lip-sync:
+    kind: studio
+    mode: lip
+    title: 口型同步
+    desc: 将音频对齐到角色面部动作。
+  motion-control:
+    kind: studio
+    mode: motion
+    title: 动作控制
+    desc: 姿态参考与镜头路径约束。
+  noise-reduction:
+    kind: studio
+    mode: denoise
+    title: 降噪修复
+    desc: 清理底噪与齿音，提升口播可用性。
+  seedance:
+    kind: studio
+    mode: model
+    title: 律动视频
+    desc: 舞蹈与肢体语言强调的运动视频工作流（演示路由 /seedance）。
+  seedance-2-0:
+    kind: studio
+    mode: model
+    title: 律动视频 2.0
+    desc: 改进版运动控制与细节保留（演示路由 /seedance-2-0）。
+  hailuo-ai:
+    kind: studio
+    mode: model
+    title: 海螺路线
+    desc: 高动态场景与卡通渲染风格（演示）。
+  kling-2-6:
+    kind: studio
+    mode: model
+    title: 可灵路线
+    desc: 写实场景与复杂运镜示意（演示）。
+  nano-banana:
+    kind: studio
+    mode: model
+    title: 轻量趣味模型
+    desc: 快速草稿与社交短视频风格。
+  pika-ai:
+    kind: studio
+    mode: model
+    title: 皮卡车路线
+    desc: 强调节奏剪辑与转场模板。
+  pixverse-ai:
+    kind: studio
+    mode: model
+    title: 像素宇宙路线
+    desc: 科幻与像素风画面实验。
+  runway:
+    kind: studio
+    mode: model
+    title: 跑道级工作流
+    desc: 专业时间线与遮罩编辑占位。
+  runway-ai:
+    kind: studio
+    mode: model
+    title: 跑道级工作流 Pro
+    desc: 扩展控件与批量任务队列（示意）。
+  sora-2:
+    kind: studio
+    mode: model
+    title: 长镜头叙事
+    desc: 长时长与复杂因果链提示词（演示）。
+  suno:
+    kind: studio
+    mode: music
+    title: 配乐生成
+    desc: 背景音乐与氛围音效占位。
+  veo-3:
+    kind: studio
+    mode: model
+    title: 高清写实路线
+    desc: 高分辨率与稳定肤色（示意）。
+  vidu-ai:
+    kind: studio
+    mode: model
+    title: 叙事分镜路线
+    desc: 多分镜一致性与对白同步占位。
+  wan-ai:
+    kind: studio
+    mode: model
+    title: 万用综合模型
+    desc: 通用提示词与多比例输出。

@@ -60,14 +60,15 @@
 
           <h2 id="routes">工具路由生成</h2>
           <p>
-            英文根路径（例如 <code>/seedance/</code>、<code>/seedance-2-0/</code>、<code>/text-to-video/</code>）与参考站 sitemap 中的语言前缀路径（例如
-            <code>/es/seedance/</code>、<code>/zh-Hant/seedance-2-0/</code>）均由脚本生成，便于对齐信息架构；文案与样式仍为原创。
+            路由与页面元数据的<strong>单一来源</strong>是 <code>site/routes.yaml</code>（slug、类型、标题与描述）；页面骨架由
+            <code>site/templates/</code> 下的 <strong>Jinja2</strong> 模板渲染。英文根路径与 17 个语言前缀下的镜像路径均由构建脚本展开。
           </p>
-          <p>在项目根目录执行：</p>
+          <p>依赖安装（首次）：<code>pip install -r requirements.txt</code></p>
+          <p>生成静态页：</p>
           <p><code>python3 scripts/generate_pages.py</code></p>
           <p>
-            脚本会写入 <code>public/&lt;slug&gt;/index.html</code>、<code>public/&lt;locale&gt;/&lt;slug&gt;/index.html</code>，以及各语言的
-            <code>public/&lt;locale&gt;/index.html</code>、<code>public/&lt;locale&gt;/blog/index.html</code>，并刷新 <code>public/sitemap.xml</code>。默认中文营销首页
+            输出 <code>public/&lt;slug&gt;/index.html</code>、<code>public/&lt;locale&gt;/&lt;slug&gt;/index.html</code>，以及
+            <code>public/&lt;locale&gt;/index.html</code>、<code>public/&lt;locale&gt;/blog/index.html</code>，并刷新 <code>public/sitemap.xml</code>。默认营销首页
             <code>public/index.html</code> 与 <code>public/blog/</code> 下手工页面不会被覆盖。
           </p>
           <p>核对参考站 URL 清单可运行：<code>python3 scripts/fetch_sitemap_routes.py</code>（只读拉取 sitemap）。</p>

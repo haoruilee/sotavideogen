@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from 'partials/paths.html' import path %}
+{% block main %}
+<div class="page-hero tool-hero">
+  <p class="eyebrow">sota video gen · {{ page_path }}</p>
+  <h1 class="section-title">{{ title }}</h1>
+  <p class="section-sub">{{ desc }}</p>
+</div>
+<div class="tool-layout">
+  <section class="tool-panel card" aria-label="生成参数">
+    {% include 'partials/studio_form.html' %}
+  </section>
+  <aside aria-label="说明">
+    {% include 'partials/studio_sidebar.html' %}
+  </aside>
+</div>
+{% endblock %}
