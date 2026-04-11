@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>视频特效 — Sota Video Gen</title>
+    <meta name="description" content="粒子、光效与氛围增强（示意控件）。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/site.css" />
+  </head>
+  <body>
+    <a class="sr-only" href="#main">跳到主要内容</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/pt/">
+          <span class="brand-mark" aria-hidden="true">SV</span>
+          <span>Sota Video Gen</span>
+        </a>
+        <button
+          type="button"
+          class="nav-toggle"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          菜单
+        </button>
+        <nav id="site-nav" class="nav" data-nav aria-label="主导航">
+  <a href="/pt/">首页</a>
+  <a href="/pt/ai-tools/" aria-current="page">AI 工具</a>
+  <a href="/pt/pricing/">定价</a>
+  <a href="/app/">应用</a>
+  <a href="/pt/blog/">博客</a>
+  <a href="/docs/">文档</a>
+  <a class="btn btn-primary" href="/app/">打开工作台</a>
+</nav>
+      </div>
+    </header>
+    <main id="main" class="wrap tool-page">
+      <div class="page-hero tool-hero">
+        <p class="eyebrow">sota video gen · /pt/video-effects/</p>
+        <h1 class="section-title">视频特效</h1>
+        <p class="section-sub">粒子、光效与氛围增强（示意控件）。</p>
+      </div>
+      <div class="tool-layout">
+        <section class="tool-panel card" aria-label="生成参数">
+          <form class="tool-form" action="#" method="get" onsubmit="return false;">
+
+<label class="field">
+  <span class="field-label">源视频</span>
+  <input class="input" type="file" accept="video/*" />
+  <span class="field-hint">演示控件，无后端处理。</span>
+</label>
+
+<label class="field">
+  <span class="field-label">提示词</span>
+  <textarea class="input input-textarea" rows="5" placeholder="主体、场景、动作、光线、镜头与节奏…"></textarea>
+</label>
+
+  <div class="form-actions">
+    <button type="button" class="btn btn-primary">加入队列（演示）</button>
+    <button type="reset" class="btn btn-ghost">重置</button>
+  </div>
+  <p class="form-note">此为前端占位：接入后端后把表单提交到你的任务 API。</p>
+</form>
+        </section>
+        <aside aria-label="说明">
+          <div class="tool-sidebar card">
+  <h3>工作流提示</h3>
+  <ul class="checklist">
+    <li>先写清主体与场景，再补充镜头与节奏。</li>
+    <li>同一项目固定调色与字体，减少风格漂移。</li>
+    <li>导出前检查分辨率与平台安全区。</li>
+  </ul>
+  <h3>快捷链接</h3>
+  <p class="muted"><a href="/pt/ai-tools/">返回工具目录</a></p>
+</div>
+        </aside>
+      </div>
+    </main>
+    <footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom: 0.75rem">
+        <span class="brand-mark" aria-hidden="true">SV</span>
+        <span>Sota Video Gen</span>
+      </div>
+      <p style="margin: 0; max-width: 28rem">
+        品牌词：<strong>sota video gen</strong>。页面为演示用途，请替换为你的域名、分析与法务文本。
+      </p>
+    </div>
+    <div>
+      <h4>产品</h4>
+      <ul>
+        <li><a href="/pt/ai-tools/">AI 工具</a></li>
+        <li><a href="/app/">应用</a></li>
+        <li><a href="/pt/pricing/">定价</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>内容</h4>
+      <ul>
+        <li><a href="/pt/blog/">博客</a></li>
+        <li><a href="/docs/">文档</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>公司</h4>
+      <ul>
+        <li><a href="/pt/about-us/">关于我们</a></li>
+        <li><a href="/pt/affiliate/">联盟合作</a></li>
+        <li><a href="/pt/refer-a-friend/">邀请好友</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <span>© <span id="y"></span> Sota Video Gen</span>
+    <span>独立演示站点</span>
+  </div>
+</footer>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+<script src="/js/site.js" defer></script>
+  </body>
+</html>

@@ -60,11 +60,17 @@
 
           <h2 id="routes">工具路由生成</h2>
           <p>
-            大量扁平工具路径（例如 <code>/seedance/</code>、<code>/seedance-2-0/</code>、<code>/text-to-video/</code>）由脚本生成，便于与常见聚合站的信息架构对齐，同时保持文案与样式原创。
+            英文根路径（例如 <code>/seedance/</code>、<code>/seedance-2-0/</code>、<code>/text-to-video/</code>）与参考站 sitemap 中的语言前缀路径（例如
+            <code>/es/seedance/</code>、<code>/zh-Hant/seedance-2-0/</code>）均由脚本生成，便于对齐信息架构；文案与样式仍为原创。
           </p>
           <p>在项目根目录执行：</p>
           <p><code>python3 scripts/generate_pages.py</code></p>
-          <p>脚本会写入 <code>public/&lt;slug&gt;/index.html</code> 并刷新 <code>public/sitemap.xml</code>。手工维护的页面（如 <code>public/blog/</code>）不会被覆盖。</p>
+          <p>
+            脚本会写入 <code>public/&lt;slug&gt;/index.html</code>、<code>public/&lt;locale&gt;/&lt;slug&gt;/index.html</code>，以及各语言的
+            <code>public/&lt;locale&gt;/index.html</code>、<code>public/&lt;locale&gt;/blog/index.html</code>，并刷新 <code>public/sitemap.xml</code>。默认中文营销首页
+            <code>public/index.html</code> 与 <code>public/blog/</code> 下手工页面不会被覆盖。
+          </p>
+          <p>核对参考站 URL 清单可运行：<code>python3 scripts/fetch_sitemap_routes.py</code>（只读拉取 sitemap）。</p>
 
           <h2 id="subdomains">子域映射</h2>
           <p>
@@ -81,8 +87,8 @@
             </li>
           </ul>
           <p>
-            本站页面链接已按路径划分：<code>/</code> 营销首页、<code>/ai-tools/</code> 工具目录、各工具子路径（如 <code>/image-to-video/</code>）、以及
-            <code>/app/</code>、<code>/blog/</code>、<code>/docs/</code>，便于你对照配置 DNS 与路由。
+            本站页面链接已按路径划分：<code>/</code> 营销首页、<code>/ai-tools/</code> 工具目录、各工具子路径（如 <code>/image-to-video/</code>）、可选语言前缀（如
+            <code>/ja/ai-tools/</code>）、以及 <code>/app/</code>、<code>/blog/</code>、<code>/docs/</code>，便于你对照配置 DNS 与路由。
           </p>
 
           <h2 id="terms">服务条款（占位）</h2>

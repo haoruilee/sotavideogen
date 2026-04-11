@@ -18,7 +18,13 @@ cd public && python3 -m http.server 8080
 python3 scripts/generate_pages.py
 ```
 
-会更新 `public/sitemap.xml` 与 `public/robots.txt`（域名占位仍为 `https://example.com`）。`public/blog/` 等手工页面不会被脚本覆盖。
+会更新 `public/sitemap.xml` 与 `public/robots.txt`（域名占位仍为 `https://example.com`）。同时生成 **17 个语言前缀** 下的同款路由（如 `/es/seedance/`、`/zh-Hant/text-to-video/`），以及各 `/locale/` 首页与 `/locale/blog/` 镜像页。`public/index.html` 与 `public/blog/` 下已有手工页面不会被覆盖。
+
+核对参考站 sitemap 中的路径集合（只读）：
+
+```bash
+python3 scripts/fetch_sitemap_routes.py
+```
 
 ## 上线前
 
