@@ -38,6 +38,11 @@ python3 scripts/fetch_sitemap_routes.py
 python3 scripts/verify_sitemap_parity.py
 ```
 
+### aiping.cn API 冒烟（GitHub Actions）
+
+仓库 Secret：`AIPING_TOKEN`。工作流 [`.github/workflows/aiping-api-smoke.yml`](.github/workflows/aiping-api-smoke.yml) 会执行 [`scripts/aiping_api_smoke.sh`](scripts/aiping_api_smoke.sh)（POST 创建任务 + 轮询 GET），**日志中不会打印 Token**。  
+合并到默认分支后可在 **Actions** 里手动 **Run workflow**，或修改相关文件触发推送。本地未设置 `AIPING_TOKEN` 时脚本会直接跳过（exit 0）。
+
 ## 上线前
 
 - 将 `public/sitemap.xml` 与 `public/robots.txt` 中的 `https://example.com` 换成你的正式域名。

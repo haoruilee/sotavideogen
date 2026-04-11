@@ -1,0 +1,27 @@
+# Uses repository secret AIPING_TOKEN. Does not print the token.
+# Run manually or after push to default branch; skips if secret is unset.
+
+name: Aiping API smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/aiping_api_smoke.sh"
+      - ".github/workflows/aiping-api-smoke.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run aiping video API smoke
+        env:
+          AIPING_TOKEN: ${{ secrets.AIPING_TOKEN }}
+        run: |
+          chmod +x scripts/aiping_api_smoke.sh
+          scripts/aiping_api_smoke.sh
