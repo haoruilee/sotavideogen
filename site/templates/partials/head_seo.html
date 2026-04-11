@@ -1,0 +1,25 @@
+    <link rel="canonical" href="{{ canonical_url }}" />
+{% for alt in hreflang_alternates %}
+    <link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}" />
+{% endfor %}
+    <meta property="og:type" content="{{ og_type | default('website') }}" />
+    <meta property="og:site_name" content="{{ site.name }}" />
+    <meta property="og:title" content="{% if head_display_title %}{{ head_display_title }}{% else %}{{ title }} — {{ site.name }}{% endif %}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:url" content="{{ canonical_url }}" />
+{% if site.og_image %}
+    <meta property="og:image" content="{{ site.og_image if site.og_image.startswith('http') else (abs_base ~ site.og_image) }}" />
+{% endif %}
+    <meta name="twitter:card" content="summary_large_image" />
+{% if site.twitter_site %}
+    <meta name="twitter:site" content="{{ site.twitter_site }}" />
+{% endif %}
+    <meta name="twitter:title" content="{% if head_display_title %}{{ head_display_title }}{% else %}{{ title }} — {{ site.name }}{% endif %}" />
+    <meta name="twitter:description" content="{{ description }}" />
+{% if site.og_image %}
+    <meta name="twitter:image" content="{{ site.og_image if site.og_image.startswith('http') else (abs_base ~ site.og_image) }}" />
+{% endif %}
+    <meta name="keywords" content="{{ site.brand_keywords }}" />
+{% if json_ld %}
+    <script type="application/ld+json">{{ json_ld | safe }}</script>
+{% endif %}

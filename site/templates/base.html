@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ html_lang }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if head_display_title %}{{ head_display_title }}{% else %}{{ title }} — {{ site.name }}{% endif %}</title>
+    <meta name="description" content="{{ description }}" />
+{% include 'partials/head_seo.html' %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/site.css" />
+  </head>
+  <body>
+    <a class="sr-only" href="#main">跳到主要内容</a>
+
+    {% include 'partials/header.html' %}
+
+    <main id="main" class="{% block main_classes %}wrap tool-page{% endblock %}">
+      {% block main %}{% endblock %}
+    </main>
+
+    {% include 'partials/footer.html' %}
+  </body>
+</html>

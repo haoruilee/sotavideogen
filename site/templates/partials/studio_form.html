@@ -1,0 +1,136 @@
+{# Field sets mirror the former generate_pages.studio_form() behavior #}
+{% set timing = mode in ['video', 'image_to_video', 'video_rewrite', 'reference_video', 'image', 'avatar', 'motion', 'model'] %}
+
+<form class="tool-form" action="#" method="get" onsubmit="return false;">
+  {% if mode in ['image_to_video', 'reference_video', 'image_edit', 'photo', 'avatar', 'motion'] %}
+  <label class="field">
+    <span class="field-label">参考图</span>
+    <input class="input" type="file" accept="image/*" />
+    <span class="field-hint">静态演示：未实际上传；接入 API 后绑定存储桶。</span>
+  </label>
+  {% endif %}
+
+  {% if mode in ['video_rewrite', 'transition', 'effects', 'lip'] %}
+  <label class="field">
+    <span class="field-label">源视频</span>
+    <input class="input" type="file" accept="video/*" />
+    <span class="field-hint">演示控件，无后端处理。</span>
+  </label>
+  {% endif %}
+
+  {% if mode == 'transition' %}
+  <label class="field">
+    <span class="field-label">第二段视频</span>
+    <input class="input" type="file" accept="video/*" />
+  </label>
+  {% endif %}
+
+  {% if mode == 'voice' %}
+  <label class="field">
+    <span class="field-label">音色样本</span>
+    <input class="input" type="file" accept="audio/*" />
+    <span class="field-hint">请确保拥有合法授权后再开启克隆。</span>
+  </label>
+  {% elif mode == 'denoise' %}
+  <label class="field">
+    <span class="field-label">待处理音频</span>
+    <input class="input" type="file" accept="audio/*" />
+  </label>
+  {% elif mode == 'lip' %}
+  <label class="field">
+    <span class="field-label">对齐音频</span>
+    <input class="input" type="file" accept="audio/*" />
+  </label>
+  {% endif %}
+
+  {% if mode == 'tts' %}
+  <label class="field">
+    <span class="field-label">脚本</span>
+    <textarea class="input input-textarea" rows="6" placeholder="粘贴口播稿，按段落分行…"></textarea>
+  </label>
+  <label class="field">
+    <span class="field-label">预设音色</span>
+    <select class="input">
+      <option>中性 · 旁白</option>
+      <option>明亮 · 广告</option>
+      <option>低沉 · 纪录</option>
+    </select>
+  </label>
+  {% elif mode not in ['denoise', 'lip'] %}
+  <label class="field">
+    <span class="field-label">提示词</span>
+    <textarea class="input input-textarea" rows="5" placeholder="主体、场景、动作、光线、镜头与节奏…"></textarea>
+  </label>
+  {% endif %}
+
+  {% if mode in ['video_rewrite', 'image_edit'] %}
+  <label class="field">
+    <span class="field-label">变化强度</span>
+    <input class="input" type="range" min="0" max="100" value="45" />
+  </label>
+  {% endif %}
+
+  {% if mode == 'reference_video' %}
+  <label class="field">
+    <span class="field-label">参考权重</span>
+    <input class="input" type="range" min="0" max="100" value="60" />
+  </label>
+  {% endif %}
+
+  {% if mode == 'photo' %}
+  <label class="field">
+    <span class="field-label">变化强度</span>
+    <input class="input" type="range" min="0" max="100" value="45" />
+  </label>
+  {% endif %}
+
+  {% if mode == 'music' %}
+  <label class="field">
+    <span class="field-label">情绪</span>
+    <select class="input">
+      <option>轻快</option>
+      <option>史诗</option>
+      <option>氛围</option>
+    </select>
+  </label>
+  {% endif %}
+
+  {% if timing %}
+  <div class="field-row">
+    <label class="field">
+      <span class="field-label">比例</span>
+      <select class="input">
+        <option>16:9</option>
+        <option>9:16</option>
+        <option>1:1</option>
+        <option>4:3</option>
+      </select>
+    </label>
+    <label class="field">
+      <span class="field-label">时长</span>
+      <select class="input">
+        <option>5 秒</option>
+        <option>10 秒</option>
+        <option>15 秒</option>
+      </select>
+    </label>
+  </div>
+  {% endif %}
+
+  {% if mode == 'model' %}
+  <label class="field">
+    <span class="field-label">细节等级</span>
+    <select class="input">
+      <option>标准</option>
+      <option>高细节</option>
+      <option>草稿</option>
+    </select>
+  </label>
+  {% endif %}
+
+  <div class="form-actions">
+    <button type="button" class="btn btn-primary">加入队列（演示）</button>
+    <button type="reset" class="btn btn-ghost">重置</button>
+  </div>
+  <p class="form-note">此为前端占位：接入后端后把表单提交到你的任务 API。</p>
+</form>

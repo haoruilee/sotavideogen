@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from 'partials/paths.html' import path %}
+{% block main %}
+<div class="page-hero">
+  <p class="eyebrow">sota video gen</p>
+  <h1 class="section-title">{{ title }}</h1>
+  <p class="section-sub">{{ desc }}</p>
+</div>
+<div class="hub-grid">
+  {% for section in hub_sections %}
+  <section class="card hub-card">
+    <h2>{{ section.title }}</h2>
+    <ul class="hub-list">
+      {% for item in section.links %}
+      <li>
+        <a href="{{ item.href }}">{{ item.title }}</a>
+        {% if section.show_path %}<span class="mono">{{ item.href }}</span>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+  <section class="card hub-card hub-card-wide">
+    <h2>全部工具页（自动生成清单）</h2>
+    <ul class="hub-list compact">
+      {% for item in tool_items %}
+      <li><a href="{{ item.href }}">{{ item.title }}</a> — <span class="muted">{{ item.desc }}</span></li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>
+{% endblock %}

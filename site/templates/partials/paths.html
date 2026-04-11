@@ -1,0 +1,9 @@
+{# URL helpers: prefix is locale code or empty for default site root #}
+{% macro root(prefix) -%}
+{%- if prefix -%}/{{ prefix }}/{%- else -%}/{%- endif -%}
+{%- endmacro %}
+
+{% macro path(prefix, slug) -%}
+{%- set s = slug | trim('/') -%}
+{%- if prefix -%}/{{ prefix }}/{{ s }}/{%- else -%}/{{ s }}/{%- endif -%}
+{%- endmacro %}
