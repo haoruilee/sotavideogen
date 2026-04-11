@@ -10,6 +10,16 @@ cd public && python3 -m http.server 8080
 
 浏览器访问 `http://127.0.0.1:8080/`。请勿直接双击打开 HTML（绝对路径 `/css/...` 需要 HTTP 根路径）。
 
+## 生成工具路由页面
+
+扁平工具路径（如 `/seedance/`、`/seedance-2-0/`、`/text-to-video/` 等）由脚本批量生成：
+
+```bash
+python3 scripts/generate_pages.py
+```
+
+会更新 `public/sitemap.xml` 与 `public/robots.txt`（域名占位仍为 `https://example.com`）。`public/blog/` 等手工页面不会被脚本覆盖。
+
 ## 上线前
 
 - 将 `public/sitemap.xml` 与 `public/robots.txt` 中的 `https://example.com` 换成你的正式域名。

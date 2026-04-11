@@ -584,3 +584,175 @@ section {
 .app-panel p {
   color: var(--muted);
 }
+
+/* Tool / studio pages */
+.tool-page {
+  padding-bottom: 4rem;
+}
+
+.tool-hero .section-sub {
+  margin-bottom: 0;
+}
+
+.tool-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .tool-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tool-panel {
+  padding: 1.5rem;
+}
+
+.tool-sidebar h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.tool-sidebar h3 + ul {
+  margin-top: 0;
+}
+
+.checklist {
+  margin: 0 0 1.25rem;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.checklist li + li {
+  margin-top: 0.35rem;
+}
+
+.tool-form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.field-hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.65rem 0.85rem;
+  font: inherit;
+}
+
+.input:focus {
+  outline: 2px solid rgba(94, 234, 212, 0.35);
+  outline-offset: 1px;
+}
+
+.input-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.form-note {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hub-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hub-card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+}
+
+.hub-card-wide {
+  grid-column: 1 / -1;
+}
+
+.hub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.hub-list.compact {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .hub-list.compact {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hub-list a {
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.marketing-page .btn {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}

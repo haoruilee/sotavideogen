@@ -35,6 +35,8 @@
         </button>
         <nav id="site-nav" class="nav" data-nav aria-label="主导航">
           <a href="/" aria-current="page">首页</a>
+          <a href="/ai-tools/">AI 工具</a>
+          <a href="/pricing/">定价</a>
           <a href="/app/">应用</a>
           <a href="/blog/">博客</a>
           <a href="/docs/">文档</a>
@@ -51,11 +53,12 @@
             <h1>用一句话，把创意变成可发布的视频</h1>
             <p class="lead">
               Sota Video Gen 是原创的 AI
-              创作工作台：从文案与分镜到生成与导出，流程清晰、界面克制。本站为静态演示站点，便于你绑定主域与子域（如
-              app、blog、docs）。
+              创作工作台：从文案与分镜到生成与导出，流程清晰、界面克制。路由结构参考常见聚合站（含
+              <a href="/seedance/">/seedance</a>、<a href="/seedance-2-0/">/seedance-2-0</a>
+              等工具页），文案与视觉均为独立创作。
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="/app/">免费试用（演示）</a>
+              <a class="btn btn-primary" href="/ai-tools/">浏览 AI 工具</a>
               <a class="btn btn-ghost" href="/docs/">查看集成文档</a>
             </div>
             <div class="trust">
@@ -73,6 +76,30 @@
               将你的品牌素材与脚本接入后，此处可替换为真实预览播放器或画布。
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="wrap">
+        <h2 class="section-title">热门工具路由（演示）</h2>
+        <p class="section-sub">
+          与参考站类似的扁平路径，便于 SEO 与外链；每个页面含基础表单控件，接入 API 后即可打通真实生成。
+        </p>
+        <div class="grid-3">
+          <article class="card">
+            <span class="tag">路径</span>
+            <h3><a href="/seedance/">/seedance</a></h3>
+            <p>律动与肢体语言向的视频工作流占位页。</p>
+          </article>
+          <article class="card">
+            <span class="tag">路径</span>
+            <h3><a href="/seedance-2-0/">/seedance-2-0</a></h3>
+            <p>升级版运动与细节控制示意。</p>
+          </article>
+          <article class="card">
+            <span class="tag">目录</span>
+            <h3><a href="/ai-tools/">/ai-tools</a></h3>
+            <p>全部工具与模型路线索引。</p>
+          </article>
         </div>
       </section>
 
@@ -111,7 +138,7 @@
               <li>体验额度与基础模型</li>
               <li>社区支持</li>
             </ul>
-            <a class="btn btn-ghost" href="/app/">开始使用</a>
+            <a class="btn btn-ghost" href="/pricing/">查看定价页</a>
           </div>
           <div class="price-card featured">
             <span class="badge">推荐</span>
@@ -151,27 +178,30 @@
         <div>
           <h4>产品</h4>
           <ul>
+            <li><a href="/ai-tools/">AI 工具</a></li>
             <li><a href="/app/">应用</a></li>
-            <li><a href="/docs/">文档</a></li>
+            <li><a href="/pricing/">定价</a></li>
           </ul>
         </div>
         <div>
           <h4>内容</h4>
           <ul>
             <li><a href="/blog/">博客</a></li>
+            <li><a href="/docs/">文档</a></li>
           </ul>
         </div>
         <div>
-          <h4>法律（占位）</h4>
+          <h4>公司</h4>
           <ul>
-            <li><a href="/docs/#terms">服务条款</a></li>
-            <li><a href="/docs/#privacy">隐私说明</a></li>
+            <li><a href="/about-us/">关于我们</a></li>
+            <li><a href="/affiliate/">联盟合作</a></li>
+            <li><a href="/refer-a-friend/">邀请好友</a></li>
           </ul>
         </div>
       </div>
       <div class="wrap legal">
         <span>© <span id="y"></span> Sota Video Gen</span>
-        <span>独立站点，与 heyvid.ai 无关联</span>
+        <span><a href="/docs/#terms">服务条款</a> · <a href="/docs/#privacy">隐私</a></span>
       </div>
     </footer>
     <script>
