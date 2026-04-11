@@ -67,11 +67,11 @@
           <p>生成静态页：</p>
           <p><code>python3 scripts/generate_pages.py</code></p>
           <p>
-            输出 <code>public/&lt;slug&gt;/index.html</code>、<code>public/&lt;locale&gt;/&lt;slug&gt;/index.html</code>，以及
-            <code>public/&lt;locale&gt;/index.html</code>、<code>public/&lt;locale&gt;/blog/index.html</code>，并刷新 <code>public/sitemap.xml</code>。默认营销首页
-            <code>public/index.html</code> 与 <code>public/blog/</code> 下手工页面不会被覆盖。
+            输出 <code>public/index.html</code>（来自 <code>site/templates/home.html</code>）、<code>public/&lt;slug&gt;/index.html</code>、<code>public/&lt;locale&gt;/&lt;slug&gt;/index.html</code>，以及
+            <code>public/&lt;locale&gt;/index.html</code>、<code>public/&lt;locale&gt;/blog/index.html</code>，并刷新 <code>public/sitemap.xml</code>。<code>public/blog/</code> 下除生成器写入的镜像外，你仍可手工维护文章页。
           </p>
-          <p>核对参考站 URL 清单可运行：<code>python3 scripts/fetch_sitemap_routes.py</code>（只读拉取 sitemap）。</p>
+          <p>生成页包含 <strong>canonical</strong>、<strong>hreflang</strong>、Open Graph / Twitter 卡片占位、以及轻量 JSON-LD。域名与品牌字段在 <code>site/routes.yaml</code> 的 <code>site</code> 与 <code>sitemap.base_url</code>。</p>
+          <p>核对参考站 URL 清单：<code>python3 scripts/fetch_sitemap_routes.py</code>。与 heyvid 英文 slug 集合对账：<code>python3 scripts/verify_sitemap_parity.py</code>。</p>
 
           <h2 id="subdomains">子域映射</h2>
           <p>

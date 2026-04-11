@@ -3,7 +3,7 @@
   <div class="wrap header-inner">
     <a class="brand" href="{{ root(prefix) }}">
       <span class="brand-mark" aria-hidden="true">SV</span>
-      <span>Sota Video Gen</span>
+      <span>{{ site.name }}</span>
     </a>
     <button
       type="button"
@@ -23,5 +23,6 @@
       <a href="/docs/"{% if nav_active == 'docs' %} aria-current="page"{% endif %}>文档</a>
       <a class="btn btn-primary" href="/app/">打开工作台</a>
     </nav>
+    {% include 'partials/locale_switcher.html' %}
   </div>
 </header>

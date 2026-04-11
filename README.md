@@ -14,6 +14,8 @@ cd public && python3 -m http.server 8080
 
 - **路由与文案**：编辑 `site/routes.yaml`（每个 slug 的 `kind`、`title`、`desc`，以及 `locales` 列表）。
 - **版式与组件**：编辑 `site/templates/`（Jinja2：`base.html`、各页面模板、`partials/`）。
+- **营销首页**：由 `site/templates/home.html` 生成 `public/index.html`（与工具页共享 `base`、canonical、hreflang、OG）。
+- **全局 SEO**：`site.site`（`name`、`home_title`、`contact_email`、`og_image` 等）与 `sitemap.base_url` 写入 `<head>` 与 JSON-LD。
 
 首次安装依赖后生成静态页：
 
@@ -28,6 +30,12 @@ python3 scripts/generate_pages.py
 
 ```bash
 python3 scripts/fetch_sitemap_routes.py
+```
+
+校验英文根路径 slug 是否与 heyvid sitemap 一致（CI 可跑）：
+
+```bash
+python3 scripts/verify_sitemap_parity.py
 ```
 
 ## 上线前

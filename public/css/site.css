@@ -81,8 +81,32 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 0.85rem 0;
+}
+
+.locale-switcher {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .locale-switcher {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .locale-select {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.locale-select {
+  max-width: 10rem;
+  font-size: 0.85rem;
+  padding: 0.45rem 0.65rem;
 }
 
 .brand {

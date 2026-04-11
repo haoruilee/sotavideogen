@@ -62,6 +62,20 @@ locale_labels:
   zh: 简体中文
   zh-Hant: 繁體中文
 
+# Site-wide SEO / brand (used in <head> and JSON-LD). Set base_url to your real domain before launch.
+site:
+  name: Sota Video Gen
+  legal_name: Sota Video Gen
+  brand_keywords: sota video gen
+  home_title: Sota Video Gen — AI 视频与图像创作工作台
+  home_description: >-
+    Sota Video Gen：面向创作者的 AI 视频与图像生成工作台。文案、分镜、生成与导出一体化，品牌为 sota video gen。
+  # Optional; leave empty to omit twitter:site
+  twitter_site: ""
+  contact_email: hello@example.com
+  # Optional absolute or site-root path for og:image (add a real file under public/ when ready)
+  og_image: ""
+
 sitemap:
   base_url: https://example.com
   extra_paths:

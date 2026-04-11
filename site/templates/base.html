@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ title }} — Sota Video Gen</title>
+    <title>{% if head_display_title %}{{ head_display_title }}{% else %}{{ title }} — {{ site.name }}{% endif %}</title>
     <meta name="description" content="{{ description }}" />
+{% include 'partials/head_seo.html' %}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,7 +19,7 @@
 
     {% include 'partials/header.html' %}
 
-    <main id="main" class="wrap tool-page">
+    <main id="main" class="{% block main_classes %}wrap tool-page{% endblock %}">
       {% block main %}{% endblock %}
     </main>
 

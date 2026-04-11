@@ -1,0 +1,11 @@
+{# Reference-style locale switcher: same slug under each /locale/ prefix. Default site uses /. #}
+{% from 'partials/paths.html' import root, path %}
+<div class="locale-switcher">
+  <label class="sr-only" for="locale-select">语言</label>
+  <select id="locale-select" class="input locale-select" data-locale-switcher aria-label="切换语言">
+    <option value="{{ root('') }}"{% if prefix == '' %} selected{% endif %}>中文（默认）</option>
+    {% for loc in locales %}
+    <option value="{% if switcher_slug %}{{ path(loc, switcher_slug) }}{% elif switcher == 'blog' %}{{ path(loc, 'blog') }}{% else %}{{ root(loc) }}{% endif %}"{% if prefix == loc %} selected{% endif %}>{{ locale_labels[loc] }}</option>
+    {% endfor %}
+  </select>
+</div>
