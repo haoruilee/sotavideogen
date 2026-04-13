@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import 'partials/paths.html' as paths with context %}
+{% block main_classes %}wrap{% endblock %}
+{% block main %}
+    <header class="page-hero">
+      <p class="eyebrow">sota video gen</p>
+      <h1 class="section-title" style="margin-bottom: 0.5rem">博客</h1>
+      <p class="section-sub" style="margin-bottom: 0">更新产品动态与创作方法论。</p>
+    </header>
+
+    <div class="article-list">
+      <article class="article-item">
+        <p class="meta">2026-04-10 · 入门</p>
+        <h2><a href="{{ paths.static('blog/getting-started.html') }}">五分钟了解 Sota Video Gen 工作流</a></h2>
+        <p>从提示词结构到导出检查清单，适合第一次搭建视频生成流水线的团队。</p>
+      </article>
+    </div>
+{% endblock %}

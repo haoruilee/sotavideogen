@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from 'partials/paths.html' import path %}
+{% import 'partials/paths.html' as paths with context %}
 {% block main %}
 <div class="page-hero">
   <p class="eyebrow">sota video gen</p>
@@ -12,6 +12,6 @@
     <li><a href="{{ item.href }}">{{ item.title }}</a></li>
     {% endfor %}
   </ul>
-  <p class="muted" style="margin-top:1rem"><a href="{{ path(prefix, 'ai-tools') }}">返回 AI 工具目录</a></p>
+  <p class="muted" style="margin-top:1rem"><a href="{{ paths.path(prefix, 'ai-tools') }}">返回 AI 工具目录</a></p>
 </section>
 {% endblock %}

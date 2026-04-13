@@ -1,7 +1,7 @@
-{% from 'partials/paths.html' import root, path %}
+{% import 'partials/paths.html' as paths with context %}
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="{{ root(prefix) }}">
+    <a class="brand" href="{{ paths.root(prefix) }}">
       <span class="brand-mark" aria-hidden="true">SV</span>
       <span>{{ site.name }}</span>
     </a>
@@ -15,13 +15,13 @@
       菜单
     </button>
     <nav id="site-nav" class="nav" data-nav aria-label="主导航">
-      <a href="{{ root(prefix) }}"{% if nav_active == 'home' %} aria-current="page"{% endif %}>首页</a>
-      <a href="{{ path(prefix, 'ai-tools') }}"{% if nav_active == 'tools' %} aria-current="page"{% endif %}>AI 工具</a>
-      <a href="{{ path(prefix, 'pricing') }}"{% if nav_active == 'pricing' %} aria-current="page"{% endif %}>定价</a>
-      <a href="/app/"{% if nav_active == 'app' %} aria-current="page"{% endif %}>应用</a>
-      <a href="{{ path(prefix, 'blog') }}"{% if nav_active == 'blog' %} aria-current="page"{% endif %}>博客</a>
-      <a href="/docs/"{% if nav_active == 'docs' %} aria-current="page"{% endif %}>文档</a>
-      <a class="btn btn-primary" href="/app/">打开工作台</a>
+      <a href="{{ paths.root(prefix) }}"{% if nav_active == 'home' %} aria-current="page"{% endif %}>首页</a>
+      <a href="{{ paths.path(prefix, 'ai-tools') }}"{% if nav_active == 'tools' %} aria-current="page"{% endif %}>AI 工具</a>
+      <a href="{{ paths.path(prefix, 'pricing') }}"{% if nav_active == 'pricing' %} aria-current="page"{% endif %}>定价</a>
+      <a href="{{ paths.path('', 'app') }}"{% if nav_active == 'app' %} aria-current="page"{% endif %}>应用</a>
+      <a href="{{ paths.path(prefix, 'blog') }}"{% if nav_active == 'blog' %} aria-current="page"{% endif %}>博客</a>
+      <a href="{{ paths.path('', 'docs') }}"{% if nav_active == 'docs' %} aria-current="page"{% endif %}>文档</a>
+      <a class="btn btn-primary" href="{{ paths.path('', 'app') }}">打开工作台</a>
     </nav>
     {% include 'partials/locale_switcher.html' %}
   </div>

@@ -1,17 +1,17 @@
 {% extends "base.html" %}
-{% from 'partials/paths.html' import root, path %}
+{% import 'partials/paths.html' as paths with context %}
 {% block main %}
 <header class="page-hero">
-  <p class="eyebrow">sota video gen · {{ path(prefix, 'blog') }}</p>
+  <p class="eyebrow">sota video gen · {{ paths.path(prefix, 'blog') }}</p>
   <h1 class="section-title">{{ title }}</h1>
   <p class="section-sub">{{ desc }}</p>
 </header>
 <div class="article-list">
   <article class="article-item">
     <p class="meta">演示</p>
-    <h2><a href="/blog/getting-started.html">五分钟了解 Sota Video Gen 工作流</a>（中文正文）</h2>
+    <h2><a href="{{ paths.static('blog/getting-started.html') }}">五分钟了解 Sota Video Gen 工作流</a>（中文正文）</h2>
     <p>多语言正文可后续接入 CMS；当前先复用默认博客文章链接。</p>
   </article>
 </div>
-<p style="margin-top:1.5rem"><a class="btn btn-ghost" href="{{ root(prefix) }}">返回 {{ locale_label }} 首页</a></p>
+<p style="margin-top:1.5rem"><a class="btn btn-ghost" href="{{ paths.root(prefix) }}">返回 {{ locale_label }} 首页</a></p>
 {% endblock %}

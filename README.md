@@ -24,7 +24,7 @@ pip install -r requirements.txt
 python3 scripts/generate_pages.py
 ```
 
-会更新 `public/sitemap.xml` 与 `public/robots.txt`（默认域名占位在 `site/routes.yaml` 的 `sitemap.base_url`）。同时生成 **17 个语言前缀** 下的同款路由，以及各 `/locale/` 首页与 `/locale/blog/` 镜像页。`public/index.html` 与 `public/blog/` 下已有手工页面不会被覆盖。
+会更新 `public/sitemap.xml` 与 `public/robots.txt`（默认域名占位在 `site/routes.yaml` 的 `sitemap.base_url`）。同时生成 **17 个语言前缀** 下的同款路由，以及各 `/locale/` 首页与 `/locale/blog/` 镜像页；`public/index.html`、`public/app/`、`public/blog/`、`public/docs/` 也由生成器写入。
 
 核对参考站 sitemap 中的路径集合（只读）：
 
@@ -37,6 +37,18 @@ python3 scripts/fetch_sitemap_routes.py
 ```bash
 python3 scripts/verify_sitemap_parity.py
 ```
+
+### GitHub Pages（Actions 部署）
+
+仓库已包含 [`.github/workflows/pages.yml`](.github/workflows/pages.yml)：推送到 **`main`** 时用 `SITE_BASE_URL=https://<owner>.github.io/<repo>/` 生成站点并部署到 Pages（**项目页**带 `/repo/` 前缀，站内链接与静态资源已对齐）。
+
+- **Settings → Pages**：Source 选 **GitHub Actions**。  
+- 若使用 **`username.github.io`** 用户主页（站点在根路径、无 `/repo/`），请改工作流里的 `SITE_BASE_URL` 为 `https://<username>.github.io/` 或去掉路径段。
+
+### aiping.cn API 冒烟（GitHub Actions）
+
+仓库 Secret：`AIPING_TOKEN`。工作流 [`.github/workflows/aiping-api-smoke.yml`](.github/workflows/aiping-api-smoke.yml) 会执行 [`scripts/aiping_api_smoke.sh`](scripts/aiping_api_smoke.sh)（POST 创建任务 + 轮询 GET），**日志中不会打印 Token**。  
+合并到默认分支后可在 **Actions** 里手动 **Run workflow**，或修改相关文件触发推送。本地未设置 `AIPING_TOKEN` 时脚本会直接跳过（exit 0）。
 
 ## 上线前
 
