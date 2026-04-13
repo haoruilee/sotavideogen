@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-{% from 'partials/paths.html' import root, path %}
+{% import 'partials/paths.html' as paths with context %}
 {% block main %}
 <div class="page-hero prose marketing-page">
   <p class="eyebrow">sota video gen · /{{ locale }}/</p>
   <h1 class="section-title">{{ title }}</h1>
   <p>{{ desc }}</p>
   <p>
-    <a class="btn btn-primary" href="{{ path(prefix, 'ai-tools') }}">AI 工具目录</a>
-    <a class="btn btn-ghost" href="{{ path(prefix, 'pricing') }}">定价</a>
-    <a class="btn btn-ghost" href="{{ path(prefix, 'seedance') }}">/seedance</a>
-    <a class="btn btn-ghost" href="{{ path(prefix, 'seedance-2-0') }}">/seedance-2-0</a>
+    <a class="btn btn-primary" href="{{ paths.path(prefix, 'ai-tools') }}">AI 工具目录</a>
+    <a class="btn btn-ghost" href="{{ paths.path(prefix, 'pricing') }}">定价</a>
+    <a class="btn btn-ghost" href="{{ paths.path(prefix, 'seedance') }}">/seedance</a>
+    <a class="btn btn-ghost" href="{{ paths.path(prefix, 'seedance-2-0') }}">/seedance-2-0</a>
   </p>
-  <p class="muted">默认站点的中文首页仍在 <a href="/">/</a>。此处仅镜像路由结构，便于与多语言 SEO 对齐。</p>
+  <p class="muted">默认站点的中文首页仍在 <a href="{{ paths.root('') }}">/</a>。此处仅镜像路由结构，便于与多语言 SEO 对齐。</p>
 </div>
 {% endblock %}

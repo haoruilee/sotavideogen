@@ -1,4 +1,4 @@
-{% from 'partials/paths.html' import path %}
+{% import 'partials/paths.html' as paths with context %}
 <div class="tool-sidebar card">
   <h3>工作流提示</h3>
   <ul class="checklist">
@@ -7,5 +7,5 @@
     <li>导出前检查分辨率与平台安全区。</li>
   </ul>
   <h3>快捷链接</h3>
-  <p class="muted"><a href="{{ path(prefix, 'ai-tools') }}">返回工具目录</a></p>
+  <p class="muted"><a href="{{ paths.path(prefix, 'ai-tools') }}">返回工具目录</a></p>
 </div>

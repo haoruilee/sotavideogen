@@ -1,9 +1,17 @@
-{# URL helpers: prefix is locale code or empty for default site root #}
+{# URL helpers: base_path for GitHub Pages project site (e.g. /repo). prefix = locale or "". #}
 {% macro root(prefix) -%}
-{%- if prefix -%}/{{ prefix }}/{%- else -%}/{%- endif -%}
+{%- set bp = base_path | default('', true) -%}
+{%- if prefix -%}{{ bp }}/{{ prefix }}/{%- else -%}{{ bp }}/{% endif -%}
 {%- endmacro %}
 
 {% macro path(prefix, slug) -%}
+{%- set bp = base_path | default('', true) -%}
 {%- set s = slug | trim('/') -%}
-{%- if prefix -%}/{{ prefix }}/{{ s }}/{%- else -%}/{{ s }}/{%- endif -%}
+{%- if prefix -%}{{ bp }}/{{ prefix }}/{{ s }}/{%- else -%}{{ bp }}/{{ s }}/{%- endif -%}
+{%- endmacro %}
+
+{% macro static(rel) -%}
+{%- set bp = base_path | default('', true) -%}
+{%- set r = rel | trim('/') -%}
+{%- if bp -%}{{ bp }}/{{ r }}{%- else -%}/{{ r }}{%- endif -%}
 {%- endmacro %}

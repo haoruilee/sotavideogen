@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import 'partials/paths.html' as paths with context %}
 {% block main_classes %}{% endblock %}
 {% block main %}
       <section class="hero wrap">
@@ -9,12 +10,12 @@
             <p class="lead">
               {{ site.name }} 是原创的 AI
               创作工作台：从文案与分镜到生成与导出，流程清晰、界面克制。路由结构参考常见聚合站（含
-              <a href="/seedance/">/seedance</a>、<a href="/seedance-2-0/">/seedance-2-0</a>
+              <a href="{{ paths.path('', 'seedance') }}">/seedance</a>、<a href="{{ paths.path('', 'seedance-2-0') }}">/seedance-2-0</a>
               等工具页），文案与视觉均为独立创作。
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="/ai-tools/">浏览 AI 工具</a>
-              <a class="btn btn-ghost" href="/docs/">查看集成文档</a>
+              <a class="btn btn-primary" href="{{ paths.path('', 'ai-tools') }}">浏览 AI 工具</a>
+              <a class="btn btn-ghost" href="{{ paths.path('', 'docs') }}">查看集成文档</a>
             </div>
             <div class="trust">
               <span>原创设计与文案，非第三方站点的复制品</span>
@@ -42,17 +43,17 @@
         <div class="grid-3">
           <article class="card">
             <span class="tag">路径</span>
-            <h3><a href="/seedance/">/seedance</a></h3>
+            <h3><a href="{{ paths.path('', 'seedance') }}">/seedance</a></h3>
             <p>律动与肢体语言向的视频工作流占位页。</p>
           </article>
           <article class="card">
             <span class="tag">路径</span>
-            <h3><a href="/seedance-2-0/">/seedance-2-0</a></h3>
+            <h3><a href="{{ paths.path('', 'seedance-2-0') }}">/seedance-2-0</a></h3>
             <p>升级版运动与细节控制示意。</p>
           </article>
           <article class="card">
             <span class="tag">目录</span>
-            <h3><a href="/ai-tools/">/ai-tools</a></h3>
+            <h3><a href="{{ paths.path('', 'ai-tools') }}">/ai-tools</a></h3>
             <p>全部工具与模型路线索引。</p>
           </article>
         </div>
@@ -93,7 +94,7 @@
               <li>体验额度与基础模型</li>
               <li>社区支持</li>
             </ul>
-            <a class="btn btn-ghost" href="/pricing/">查看定价页</a>
+            <a class="btn btn-ghost" href="{{ paths.path('', 'pricing') }}">查看定价页</a>
           </div>
           <div class="price-card featured">
             <span class="badge">推荐</span>
@@ -104,7 +105,7 @@
               <li>导出无水印（示意）</li>
               <li>邮件支持</li>
             </ul>
-            <a class="btn btn-primary" href="/app/">预约演示</a>
+            <a class="btn btn-primary" href="{{ paths.path('', 'app') }}">预约演示</a>
           </div>
           <div class="price-card">
             <h3>企业</h3>

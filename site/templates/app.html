@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import 'partials/paths.html' as paths with context %}
+{% block main_classes %}wrap app-shell{% endblock %}
+{% block main %}
+    <div class="app-panel">
+      <h1>工作台（演示）</h1>
+      <p>
+        将前端框架（如 React / Vue）或现成控制台接在
+        <code>{{ paths.path('', 'app') }}</code> 路径，或把子域 <code>app.</code> 指向此目录。当前为静态占位页。
+      </p>
+      <p style="margin-top: 1.25rem">
+        <a class="btn btn-primary" href="{{ paths.path('', 'ai-tools') }}">浏览 AI 工具</a>
+        <a class="btn btn-ghost" href="{{ paths.root('') }}">返回营销首页</a>
+      </p>
+    </div>
+{% endblock %}

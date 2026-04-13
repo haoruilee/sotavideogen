@@ -38,6 +38,13 @@ python3 scripts/fetch_sitemap_routes.py
 python3 scripts/verify_sitemap_parity.py
 ```
 
+### GitHub Pages（Actions 部署）
+
+仓库已包含 [`.github/workflows/pages.yml`](.github/workflows/pages.yml)：推送到 **`main`** 时用 `SITE_BASE_URL=https://<owner>.github.io/<repo>/` 生成站点并部署到 Pages（**项目页**带 `/repo/` 前缀，站内链接与静态资源已对齐）。
+
+- **Settings → Pages**：Source 选 **GitHub Actions**。  
+- 若使用 **`username.github.io`** 用户主页（站点在根路径、无 `/repo/`），请改工作流里的 `SITE_BASE_URL` 为 `https://<username>.github.io/` 或去掉路径段。
+
 ### aiping.cn API 冒烟（GitHub Actions）
 
 仓库 Secret：`AIPING_TOKEN`。工作流 [`.github/workflows/aiping-api-smoke.yml`](.github/workflows/aiping-api-smoke.yml) 会执行 [`scripts/aiping_api_smoke.sh`](scripts/aiping_api_smoke.sh)（POST 创建任务 + 轮询 GET），**日志中不会打印 Token**。  

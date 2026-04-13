@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% import 'partials/paths.html' as paths with context %}
+{% block main_classes %}wrap{% endblock %}
+{% block main %}
+<div style="padding-bottom: 4rem">
+  <header class="page-hero">
+    <p class="eyebrow">sota video gen</p>
+    <h1 class="section-title" style="margin-bottom: 0.5rem">文档</h1>
+    <p class="section-sub" style="margin-bottom: 0">本地预览、上线托管与子域映射。</p>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="docs-nav" aria-label="文档目录">
+      <a href="#local">本地预览</a>
+      <a href="#routes">工具路由生成</a>
+      <a href="#github-pages">GitHub Pages</a>
+      <a href="#subdomains">子域映射</a>
+      <a href="#terms">服务条款（占位）</a>
+      <a href="#privacy">隐私说明（占位）</a>
+    </aside>
+    <div class="prose">
+      <h2 id="local">本地预览</h2>
+      <p>
+        将 HTTP 服务器的文档根目录指向本仓库的 <code>public</code> 文件夹。示例（Python 内置服务器）：
+      </p>
+      <p><code>cd public && python3 -m http.server 8080</code></p>
+      <p>在浏览器打开 <code>http://127.0.0.1:8080/</code>。生成后的页面使用带 <code>base_path</code> 的链接（如部署在 <code>/repo/</code> 下），需要 Web 服务器，不要直接双击打开 HTML。</p>
+
+      <h2 id="routes">工具路由生成</h2>
+      <p>
+        路由与页面元数据的<strong>单一来源</strong>是 <code>site/routes.yaml</code>；页面骨架由 <code>site/templates/</code> 下的 Jinja2 渲染。
+      </p>
+      <p>依赖安装（首次）：<code>pip install -r requirements.txt</code></p>
+      <p>生成静态页：<code>python3 scripts/generate_pages.py</code></p>
+      <p>CI 中可设置环境变量 <code>SITE_BASE_URL</code>（例如 <code>https://owner.github.io/repo</code>）覆盖 <code>sitemap.base_url</code>，以便 canonical 与站内链接与 GitHub Pages 路径一致。</p>
+      <p>新增工具或模型见 <code>site/ADDING_MODELS.md</code>。</p>
+
+      <h2 id="github-pages">GitHub Pages</h2>
+      <p>
+        使用 <strong>Actions 部署</strong> 时，工作流会设置 <code>SITE_BASE_URL</code> 为 <code>https://&lt;owner&gt;.github.io/&lt;repo&gt;/</code>（项目页）。用户页 <code>username.github.io</code>（根路径无子目录）时 <code>base_path</code> 为空。
+      </p>
+      <p>将仓库 <code>Settings → Pages → Build and deployment</code> 设为 <strong>GitHub Actions</strong>，推送后由 <code>pages.yml</code> 上传 <code>public/</code> 产物。</p>
+
+      <h2 id="subdomains">子域映射</h2>
+      <p>
+        若用自有域名，把 <code>site/routes.yaml</code> 里 <code>sitemap.base_url</code> 改为 <code>https://yourdomain.com</code>（无路径前缀），重新生成即可。
+      </p>
+
+      <h2 id="terms">服务条款（占位）</h2>
+      <p>上线前请由法务审阅并替换为正式条款。</p>
+
+      <h2 id="privacy">隐私说明（占位）</h2>
+      <p>说明收集哪些数据、保存多久、用户如何删除账户等。</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
