@@ -24,7 +24,7 @@ pip install -r requirements.txt
 python3 scripts/generate_pages.py
 ```
 
-会更新 `public/sitemap.xml` 与 `public/robots.txt`（默认域名占位在 `site/routes.yaml` 的 `sitemap.base_url`）。同时生成 **17 个语言前缀** 下的同款路由，以及各 `/locale/` 首页与 `/locale/blog/` 镜像页。`public/index.html` 与 `public/blog/` 下已有手工页面不会被覆盖。
+会更新 `public/sitemap.xml` 与 `public/robots.txt`（默认域名占位在 `site/routes.yaml` 的 `sitemap.base_url`）。同时生成 **17 个语言前缀** 下的同款路由，以及各 `/locale/` 首页与 `/locale/blog/` 镜像页；`public/index.html`、`public/app/`、`public/blog/`、`public/docs/` 也由生成器写入。
 
 核对参考站 sitemap 中的路径集合（只读）：
 
