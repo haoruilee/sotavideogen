@@ -102,14 +102,22 @@
 <div class="tool-layout">
   <section class="tool-panel card" aria-label="生成参数">
 
-<form class="tool-form" action="#" method="get" onsubmit="return false;">
+<form
+  class="tool-form"
+  action="#"
+  method="get"
+  data-studio-form
+  data-mode="model"
+  data-title="像素宇宙路线"
+  onsubmit="return false;"
+>
 
 
 
 
   <label class="field">
     <span class="field-label">提示词</span>
-    <textarea class="input input-textarea" rows="5" placeholder="主体、场景、动作、光线、镜头与节奏…"></textarea>
+    <textarea class="input input-textarea" rows="5" placeholder="主体、场景、动作、光线、镜头与节奏…" data-required-input></textarea>
   </label>
 
 
@@ -146,10 +154,10 @@
   </label>
 
   <div class="form-actions">
-    <button type="button" class="btn btn-primary">加入队列（演示）</button>
+    <button type="button" class="btn btn-primary" data-queue-submit>加入队列（演示）</button>
     <button type="reset" class="btn btn-ghost">重置</button>
   </div>
-  <p class="form-note">此为前端占位：接入后端后把表单提交到你的任务 API。</p>
+  <p class="form-note" data-form-note>本地演示已启用：参数会被保存到浏览器队列，不会上传文件。</p>
 </form>  </section>
   <aside aria-label="说明">
 <div class="tool-sidebar card">
