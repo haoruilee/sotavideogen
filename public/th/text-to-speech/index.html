@@ -102,14 +102,22 @@
 <div class="tool-layout">
   <section class="tool-panel card" aria-label="生成参数">
 
-<form class="tool-form" action="#" method="get" onsubmit="return false;">
+<form
+  class="tool-form"
+  action="#"
+  method="get"
+  data-studio-form
+  data-mode="tts"
+  data-title="文本转语音"
+  onsubmit="return false;"
+>
 
 
 
 
   <label class="field">
     <span class="field-label">脚本</span>
-    <textarea class="input input-textarea" rows="6" placeholder="粘贴口播稿，按段落分行…"></textarea>
+    <textarea class="input input-textarea" rows="6" placeholder="粘贴口播稿，按段落分行…" data-required-input></textarea>
   </label>
   <label class="field">
     <span class="field-label">预设音色</span>
@@ -127,10 +135,10 @@
 
 
   <div class="form-actions">
-    <button type="button" class="btn btn-primary">加入队列（演示）</button>
+    <button type="button" class="btn btn-primary" data-queue-submit>加入队列（演示）</button>
     <button type="reset" class="btn btn-ghost">重置</button>
   </div>
-  <p class="form-note">此为前端占位：接入后端后把表单提交到你的任务 API。</p>
+  <p class="form-note" data-form-note>本地演示已启用：参数会被保存到浏览器队列，不会上传文件。</p>
 </form>  </section>
   <aside aria-label="说明">
 <div class="tool-sidebar card">
